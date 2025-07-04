@@ -81,4 +81,4 @@ const MetaDataDisplay: React.FC<MetaDataDisplayProps> = ({ meta }) => {
   );
 };
 
-export default MetaDataDisplay; 
+export default MetaDataDisplay;
