@@ -1,35 +1,43 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from 'react';
+import './App.css';
+import ImageUploader from './components/ImageUploader';
+import MetaDataExtractor from './components/MetaDataExtractor';
+import MetaDataDisplay from './components/MetaDataDisplay';
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [file, setFile] = useState<File | null>(null);
+  const [meta, setMeta] = useState<Record<string, unknown> | null>(null);
+  const [imgUrl, setImgUrl] = useState<string | null>(null);
+
+  // Update image preview when file changes
+  useEffect(() => {
+    if (file) {
+      const url = URL.createObjectURL(file);
+      setImgUrl(url);
+      return () => URL.revokeObjectURL(url);
+    } else {
+      setImgUrl(null);
+    }
+  }, [file]);
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <div style={{ maxWidth: 800, margin: '40px auto', padding: 24 }}>
+      <h1>Image Metadata Viewer</h1>
+      <ImageUploader onImageSelected={setFile} />
+      {file && (
+        <div style={{ margin: '16px 0' }}>
+          <strong>Selected file:</strong> {file.name}
+        </div>
+      )}
+      {imgUrl && (
+        <div style={{ margin: '24px 0', textAlign: 'center' }}>
+          <img src={imgUrl} alt="Preview" style={{ maxWidth: '100%', maxHeight: 350, borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
+        </div>
+      )}
+      <MetaDataExtractor file={file} onExtracted={setMeta} />
+      <MetaDataDisplay meta={meta} />
+    </div>
+  );
 }
 
-export default App
+export default App;
