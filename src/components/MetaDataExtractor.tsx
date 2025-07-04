@@ -25,3 +25,4 @@ const MetaDataExtractor: React.FC<MetaDataExtractorProps> = ({ file, onExtracted
 };
 
 export default MetaDataExtractor;
+
