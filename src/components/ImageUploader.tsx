@@ -18,4 +18,4 @@ const ImageUploader: React.FC<ImageUploaderProps> = ({ onImageSelected }) => {
   );
 };
 
-export default ImageUploader; 
+export default ImageUploader;
