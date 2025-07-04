@@ -1,0 +1,114 @@
+@import "tailwindcss";
+
+body {
+  color: #111;
+  background: #f7f8fa;
+  font-family: 'Inter', 'Segoe UI', 'Roboto', 'Arial', sans-serif;
+  margin: 0;
+}
+
+/* Ensure all text in the app is black */
+.App, h1, h2, h3, h4, h5, h6, p, div, span, label, input, pre {
+  color: #111;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+h1 {
+  color: #2563eb;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  letter-spacing: -1px;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card, .App section {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+input[type="file"] {
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  border: 1px solid #d1d5db;
+  background: #f1f5f9;
+  font-size: 1rem;
+  transition: border 0.2s;
+}
+input[type="file"]:hover, input[type="file"]:focus {
+  border: 1.5px solid #2563eb;
+}
+
+img {
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+  margin: 0 auto;
+  display: block;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+section table {
+  width: 100%;
+  border-collapse: collapse;
+}
+section td {
+  padding: 0.4rem 0.6rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+section tr:last-child td {
+  border-bottom: none;
+}
+
+@media (max-width: 600px) {
+  .App, #root > div {
+    padding: 0.5rem !important;
+  }
+  h1 {
+    font-size: 2rem;
+  }
+  .card, .App section {
+    padding: 1rem;
+  }
+}
