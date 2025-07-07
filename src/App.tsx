@@ -21,7 +21,7 @@ function App() {
   }, [file]);
 
   return (
-    <div style={{ maxWidth: 800, margin: '40px auto', padding: 24 }}>
+    <div style={{ maxWidth: 800, margin: '', padding: '10px' }}>
       <h1>Image Metadata Viewer</h1>
       <ImageUploader onImageSelected={setFile} />
       {file && (
@@ -30,7 +30,7 @@ function App() {
         </div>
       )}
       {imgUrl && (
-        <div style={{ margin: '24px 0', textAlign: 'center' }}>
+        <div style={{ margin: '', textAlign: 'center' }}>
           <img src={imgUrl} alt="Preview" style={{ maxWidth: '100%', maxHeight: 350, borderRadius: 8, boxShadow: '0 2px 8px rgba(0,0,0,0.08)' }} />
         </div>
       )}
