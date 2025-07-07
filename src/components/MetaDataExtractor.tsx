@@ -11,7 +11,8 @@ const MetaDataExtractor: React.FC<MetaDataExtractorProps> = ({ file, onExtracted
     const extract = async () => {
       if (file) {
         try {
-          const meta = await exifr.parse(file, { tiff: true, exif: true, gps: true, icc: true, xmp: true });
+          const meta = await exifr.parse(file, { tiff: true, exif: true, gps: true, icc: true, xmp: true, iptc: true });
+          console.log('Extracted metadata:', meta);
           onExtracted(meta as Record<string, unknown>);
         } catch {
           onExtracted({ error: 'Failed to extract metadata' });
