@@ -48,6 +48,7 @@ const MetaDataDisplay: React.FC<MetaDataDisplayProps> = ({ meta }) => {
   const exifData: Record<string, unknown> = {};
   const gpsInfo: Record<string, unknown> = {};
   const cameraSettings: Record<string, unknown> = {};
+  const lensInfo: Record<string, unknown> = {};
   const additionalData: Record<string, unknown> = {};
 
   for (const [key, value] of Object.entries(meta)) {
@@ -65,6 +66,10 @@ const MetaDataDisplay: React.FC<MetaDataDisplayProps> = ({ meta }) => {
       'FNumber', 'ExposureTime', 'FocalLength', 'Flash', 'WhiteBalance', 'ExposureMode', 'ExposureProgram', 'SceneCaptureType', 'ApertureValue', 'ShutterSpeedValue', 'BrightnessValue', 'ExposureBias', 'MeteringMode', 'ISOSpeedRatings', 'ISOSpeed', 'ISOSpeedLatitudeyyy', 'ISOSpeedLatitudezzz', 'LightSource', 'Saturation', 'Sharpness', 'Contrast', 'CustomRendered', 'DigitalZoomRatio', 'FocalLengthIn35mmFilm', 'GainControl', 'MaxApertureValue', 'UserComment', 'FileSource', 'SceneType', 'CFAPattern', 'DeviceSettingDescription', 'ImageUniqueID'
     ].includes(key)) {
       cameraSettings[key] = value;
+    } else if ([
+      'LensModel', 'LensMake', 'LensSerialNumber', 'LensSpecification', 'LensInfo' 
+    ].includes(key)) {
+      lensInfo[key] = value;
     } else {
       additionalData[key] = value;
     }
@@ -76,6 +81,7 @@ const MetaDataDisplay: React.FC<MetaDataDisplayProps> = ({ meta }) => {
       {renderSection('EXIF Data', exifData)}
       {renderSection('GPS Information', gpsInfo)}
       {renderSection('Camera Settings', cameraSettings)}
+      {renderSection('Lens Information', lensInfo)}
       {renderSection('Additional Data', additionalData)}
     </div>
   );
